@@ -1,0 +1,24 @@
+[gd_resource type="ShaderMaterial" format=3]
+
+[ext_resource type="Shader" path="res://vfx/flame/flame.tres" id="1_55bbd"]
+
+[resource]
+shader = ExtResource("1_55bbd")
+shader_parameter/glow_color = null
+shader_parameter/bottom_color = null
+shader_parameter/top_color = null
+shader_parameter/time_offset = null
+shader_parameter/scroll_speed = null
+shader_parameter/edge_softness = null
+shader_parameter/rim_width = null
+shader_parameter/distortion = null
+shader_parameter/aspect = null
+shader_parameter/taper = null
+shader_parameter/center_y = null
+shader_parameter/stretch = null
+shader_parameter/radius = null
+shader_parameter/erosion = null
+shader_parameter/core_color = null
+shader_parameter/core_threshold = null
+shader_parameter/glow_width = null
+shader_parameter/glow_alpha = null

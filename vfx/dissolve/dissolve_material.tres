@@ -1,0 +1,13 @@
+[gd_resource type="ShaderMaterial" format=3]
+
+[ext_resource type="Shader" path="res://vfx/dissolve/dissolve.tres" id="1_501an"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_501an")
+shader_parameter/base_color = null
+shader_parameter/dissolve_amount = null
+shader_parameter/edge_width = null
+shader_parameter/noise_tiling = null
+shader_parameter/edge_color = null
+shader_parameter/edge_intensity = null
