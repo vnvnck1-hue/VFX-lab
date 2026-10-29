@@ -1,0 +1,299 @@
+{
+	"format": "vfx_forge_recipe",
+	"version": 1,
+	"name": "portal_swirl",
+	"settings": {
+		"frame_size": 512,
+		"cols": 4,
+		"rows": 4,
+		"loop": true,
+		"usage": "effect",
+		"import_preset": "2d",
+		"export_path": "res://vfx_textures/portal_swirl.png",
+		"fps": 20.0,
+		"make_sprite_frames": true,
+		"make_particle_material": true,
+		"blend": "add"
+	},
+	"nodes": [
+		{
+			"id": 1,
+			"type": "twirl",
+			"pos": [
+				0,
+				0
+			],
+			"params": {
+				"center": [
+					0.5,
+					0.5
+				],
+				"strength": 0.6,
+				"radius": 0.7
+			}
+		},
+		{
+			"id": 2,
+			"type": "polar",
+			"pos": [
+				340,
+				0
+			],
+			"params": {
+				"mode": 0,
+				"center": [
+					0.5,
+					0.5
+				]
+			}
+		},
+		{
+			"id": 3,
+			"type": "scroll",
+			"pos": [
+				680,
+				0
+			],
+			"params": {
+				"speed_x": 1.0,
+				"speed_y": 1.0
+			}
+		},
+		{
+			"id": 4,
+			"type": "noise",
+			"pos": [
+				1020,
+				0
+			],
+			"params": {
+				"mode": 0,
+				"scale": 6.0,
+				"stretch_y": 0.5,
+				"octaves": 4.0,
+				"persistence": 0.5,
+				"evolve": 1.0,
+				"wrap_x": true,
+				"seed": 5
+			}
+		},
+		{
+			"id": 5,
+			"type": "gradient",
+			"pos": [
+				0,
+				204
+			],
+			"params": {
+				"mode": 1,
+				"center": [
+					0.5,
+					0.5
+				],
+				"angle": 0.0,
+				"scale": 1.0
+			}
+		},
+		{
+			"id": 6,
+			"type": "band",
+			"pos": [
+				340,
+				186
+			],
+			"params": {
+				"center": 0.62,
+				"width": 0.3,
+				"softness": 0.3
+			}
+		},
+		{
+			"id": 7,
+			"type": "circle",
+			"pos": [
+				0,
+				442
+			],
+			"params": {
+				"center": [
+					0.5,
+					0.5
+				],
+				"radius": 0.13,
+				"outline": false,
+				"thickness": 0.05,
+				"softness": 0.12
+			}
+		},
+		{
+			"id": 8,
+			"type": "blend",
+			"pos": [
+				1360,
+				0
+			],
+			"params": {
+				"mode": 3,
+				"amount": 1.0
+			}
+		},
+		{
+			"id": 9,
+			"type": "levels",
+			"pos": [
+				1700,
+				0
+			],
+			"params": {
+				"in_min": 0.1,
+				"in_max": 0.75,
+				"gamma": 1.0,
+				"out_min": 0.0,
+				"out_max": 1.0
+			}
+		},
+		{
+			"id": 10,
+			"type": "gradient_map",
+			"pos": [
+				2040,
+				0
+			],
+			"params": {
+				"gradient": [
+					[
+						0.0,
+						"#20084000"
+					],
+					[
+						0.25,
+						"#5a1ca8c0"
+					],
+					[
+						0.55,
+						"#a040ffff"
+					],
+					[
+						0.8,
+						"#40e0ffff"
+					],
+					[
+						1.0,
+						"#e8ffffff"
+					]
+				],
+				"alpha_by_input": false
+			}
+		},
+		{
+			"id": 11,
+			"type": "colorize",
+			"pos": [
+				340,
+				390
+			],
+			"params": {
+				"color": "#0a0418ff",
+				"intensity": 1.0
+			}
+		},
+		{
+			"id": 12,
+			"type": "color_blend",
+			"pos": [
+				2380,
+				0
+			],
+			"params": {
+				"mode": 0,
+				"amount": 0.9
+			}
+		},
+		{
+			"id": 13,
+			"type": "output",
+			"pos": [
+				2720,
+				0
+			],
+			"params": {
+				"mode": 0,
+				"edge_fade": 0.05
+			}
+		}
+	],
+	"connections": [
+		{
+			"from": 1,
+			"from_port": "uv",
+			"to": 2,
+			"to_port": "uv"
+		},
+		{
+			"from": 2,
+			"from_port": "uv",
+			"to": 3,
+			"to_port": "uv"
+		},
+		{
+			"from": 3,
+			"from_port": "uv",
+			"to": 4,
+			"to_port": "uv"
+		},
+		{
+			"from": 5,
+			"from_port": "value",
+			"to": 6,
+			"to_port": "x"
+		},
+		{
+			"from": 4,
+			"from_port": "value",
+			"to": 8,
+			"to_port": "a"
+		},
+		{
+			"from": 6,
+			"from_port": "value",
+			"to": 8,
+			"to_port": "b"
+		},
+		{
+			"from": 8,
+			"from_port": "value",
+			"to": 9,
+			"to_port": "x"
+		},
+		{
+			"from": 9,
+			"from_port": "value",
+			"to": 10,
+			"to_port": "x"
+		},
+		{
+			"from": 7,
+			"from_port": "mask",
+			"to": 11,
+			"to_port": "mask"
+		},
+		{
+			"from": 10,
+			"from_port": "color",
+			"to": 12,
+			"to_port": "a"
+		},
+		{
+			"from": 11,
+			"from_port": "color",
+			"to": 12,
+			"to_port": "b"
+		},
+		{
+			"from": 12,
+			"from_port": "color",
+			"to": 13,
+			"to_port": "color"
+		}
+	]
+}

@@ -1,0 +1,174 @@
+{
+	"format": "vfx_forge_recipe",
+	"version": 1,
+	"name": "trail_strip",
+	"settings": {
+		"frame_size": 512,
+		"cols": 1,
+		"rows": 1,
+		"loop": false,
+		"usage": "strip",
+		"import_preset": "2d",
+		"export_path": "res://vfx_textures/trail_strip.png",
+		"fps": 24.0,
+		"make_sprite_frames": false,
+		"make_particle_material": false,
+		"blend": "add"
+	},
+	"nodes": [
+		{
+			"id": 1,
+			"type": "noise",
+			"pos": [
+				0,
+				0
+			],
+			"params": {
+				"mode": 0,
+				"scale": 3.0,
+				"stretch_y": 4.0,
+				"octaves": 3.0,
+				"persistence": 0.5,
+				"evolve": 0.0,
+				"wrap_x": false,
+				"seed": 12
+			}
+		},
+		{
+			"id": 2,
+			"type": "gradient",
+			"pos": [
+				0,
+				342
+			],
+			"params": {
+				"mode": 0,
+				"center": [
+					0.5,
+					0.5
+				],
+				"angle": 0.25,
+				"scale": 1.0
+			}
+		},
+		{
+			"id": 3,
+			"type": "band",
+			"pos": [
+				340,
+				256
+			],
+			"params": {
+				"center": 0.5,
+				"width": 0.25,
+				"softness": 0.35
+			}
+		},
+		{
+			"id": 4,
+			"type": "levels",
+			"pos": [
+				340,
+				0
+			],
+			"params": {
+				"in_min": 0.25,
+				"in_max": 0.8,
+				"gamma": 1.0,
+				"out_min": 0.0,
+				"out_max": 1.0
+			}
+		},
+		{
+			"id": 5,
+			"type": "blend",
+			"pos": [
+				680,
+				0
+			],
+			"params": {
+				"mode": 3,
+				"amount": 0.7
+			}
+		},
+		{
+			"id": 6,
+			"type": "gradient_map",
+			"pos": [
+				1020,
+				0
+			],
+			"params": {
+				"gradient": [
+					[
+						0.0,
+						"#3080ff00"
+					],
+					[
+						0.3,
+						"#3a8cffa0"
+					],
+					[
+						0.7,
+						"#7fe0ffff"
+					],
+					[
+						1.0,
+						"#ffffffff"
+					]
+				],
+				"alpha_by_input": false
+			}
+		},
+		{
+			"id": 7,
+			"type": "output",
+			"pos": [
+				1360,
+				0
+			],
+			"params": {
+				"mode": 0,
+				"edge_fade": 0.05
+			}
+		}
+	],
+	"connections": [
+		{
+			"from": 2,
+			"from_port": "value",
+			"to": 3,
+			"to_port": "x"
+		},
+		{
+			"from": 1,
+			"from_port": "value",
+			"to": 4,
+			"to_port": "x"
+		},
+		{
+			"from": 3,
+			"from_port": "value",
+			"to": 5,
+			"to_port": "a"
+		},
+		{
+			"from": 4,
+			"from_port": "value",
+			"to": 5,
+			"to_port": "b"
+		},
+		{
+			"from": 5,
+			"from_port": "value",
+			"to": 6,
+			"to_port": "x"
+		},
+		{
+			"from": 6,
+			"from_port": "color",
+			"to": 7,
+			"to_port": "color"
+		}
+	]
+}

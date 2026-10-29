@@ -1,0 +1,123 @@
+[gd_resource type="SpriteFrames" format=3]
+
+[ext_resource type="Texture2D" path="res://vfx_textures/heal_sparkles.png" id="1_sheet"]
+
+[sub_resource type="AtlasTexture" id="atlas_0"]
+atlas = ExtResource("1_sheet")
+region = Rect2(0, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="atlas_1"]
+atlas = ExtResource("1_sheet")
+region = Rect2(512, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="atlas_2"]
+atlas = ExtResource("1_sheet")
+region = Rect2(1024, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="atlas_3"]
+atlas = ExtResource("1_sheet")
+region = Rect2(1536, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="atlas_4"]
+atlas = ExtResource("1_sheet")
+region = Rect2(0, 512, 512, 512)
+
+[sub_resource type="AtlasTexture" id="atlas_5"]
+atlas = ExtResource("1_sheet")
+region = Rect2(512, 512, 512, 512)
+
+[sub_resource type="AtlasTexture" id="atlas_6"]
+atlas = ExtResource("1_sheet")
+region = Rect2(1024, 512, 512, 512)
+
+[sub_resource type="AtlasTexture" id="atlas_7"]
+atlas = ExtResource("1_sheet")
+region = Rect2(1536, 512, 512, 512)
+
+[sub_resource type="AtlasTexture" id="atlas_8"]
+atlas = ExtResource("1_sheet")
+region = Rect2(0, 1024, 512, 512)
+
+[sub_resource type="AtlasTexture" id="atlas_9"]
+atlas = ExtResource("1_sheet")
+region = Rect2(512, 1024, 512, 512)
+
+[sub_resource type="AtlasTexture" id="atlas_10"]
+atlas = ExtResource("1_sheet")
+region = Rect2(1024, 1024, 512, 512)
+
+[sub_resource type="AtlasTexture" id="atlas_11"]
+atlas = ExtResource("1_sheet")
+region = Rect2(1536, 1024, 512, 512)
+
+[sub_resource type="AtlasTexture" id="atlas_12"]
+atlas = ExtResource("1_sheet")
+region = Rect2(0, 1536, 512, 512)
+
+[sub_resource type="AtlasTexture" id="atlas_13"]
+atlas = ExtResource("1_sheet")
+region = Rect2(512, 1536, 512, 512)
+
+[sub_resource type="AtlasTexture" id="atlas_14"]
+atlas = ExtResource("1_sheet")
+region = Rect2(1024, 1536, 512, 512)
+
+[sub_resource type="AtlasTexture" id="atlas_15"]
+atlas = ExtResource("1_sheet")
+region = Rect2(1536, 1536, 512, 512)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("atlas_0")
+}, {
+"duration": 1.0,
+"texture": SubResource("atlas_1")
+}, {
+"duration": 1.0,
+"texture": SubResource("atlas_2")
+}, {
+"duration": 1.0,
+"texture": SubResource("atlas_3")
+}, {
+"duration": 1.0,
+"texture": SubResource("atlas_4")
+}, {
+"duration": 1.0,
+"texture": SubResource("atlas_5")
+}, {
+"duration": 1.0,
+"texture": SubResource("atlas_6")
+}, {
+"duration": 1.0,
+"texture": SubResource("atlas_7")
+}, {
+"duration": 1.0,
+"texture": SubResource("atlas_8")
+}, {
+"duration": 1.0,
+"texture": SubResource("atlas_9")
+}, {
+"duration": 1.0,
+"texture": SubResource("atlas_10")
+}, {
+"duration": 1.0,
+"texture": SubResource("atlas_11")
+}, {
+"duration": 1.0,
+"texture": SubResource("atlas_12")
+}, {
+"duration": 1.0,
+"texture": SubResource("atlas_13")
+}, {
+"duration": 1.0,
+"texture": SubResource("atlas_14")
+}, {
+"duration": 1.0,
+"texture": SubResource("atlas_15")
+}],
+"loop": true,
+"name": &"default",
+"speed": 20.0
+}]

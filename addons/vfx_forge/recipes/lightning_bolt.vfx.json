@@ -1,0 +1,146 @@
+{
+	"format": "vfx_forge_recipe",
+	"version": 1,
+	"name": "lightning_bolt",
+	"settings": {
+		"frame_size": 512,
+		"cols": 4,
+		"rows": 4,
+		"loop": true,
+		"usage": "effect",
+		"import_preset": "2d",
+		"export_path": "res://vfx_textures/lightning_bolt.png",
+		"fps": 24.0,
+		"make_sprite_frames": true,
+		"make_particle_material": true,
+		"blend": "add"
+	},
+	"nodes": [
+		{
+			"id": 1,
+			"type": "lightning",
+			"pos": [
+				0,
+				0
+			],
+			"params": {
+				"a": [
+					0.44,
+					0.03
+				],
+				"b": [
+					0.56,
+					0.97
+				],
+				"amplitude": 0.13,
+				"frequency": 5.0,
+				"width": 0.011,
+				"glow": 0.035,
+				"branches": 3.0,
+				"flicker": 8.0,
+				"seed": 3
+			}
+		},
+		{
+			"id": 2,
+			"type": "math",
+			"pos": [
+				340,
+				0
+			],
+			"params": {
+				"op": 2,
+				"b": 0.6
+			}
+		},
+		{
+			"id": 3,
+			"type": "blend",
+			"pos": [
+				680,
+				0
+			],
+			"params": {
+				"mode": 5,
+				"amount": 1.0
+			}
+		},
+		{
+			"id": 4,
+			"type": "gradient_map",
+			"pos": [
+				1020,
+				0
+			],
+			"params": {
+				"gradient": [
+					[
+						0.0,
+						"#5a2cff00"
+					],
+					[
+						0.2,
+						"#6a3cff90"
+					],
+					[
+						0.5,
+						"#55c8ffff"
+					],
+					[
+						0.8,
+						"#c8f6ffff"
+					],
+					[
+						1.0,
+						"#ffffffff"
+					]
+				],
+				"alpha_by_input": false
+			}
+		},
+		{
+			"id": 5,
+			"type": "output",
+			"pos": [
+				1360,
+				0
+			],
+			"params": {
+				"mode": 0,
+				"edge_fade": 0.05
+			}
+		}
+	],
+	"connections": [
+		{
+			"from": 1,
+			"from_port": "glow",
+			"to": 2,
+			"to_port": "a"
+		},
+		{
+			"from": 1,
+			"from_port": "core",
+			"to": 3,
+			"to_port": "a"
+		},
+		{
+			"from": 2,
+			"from_port": "value",
+			"to": 3,
+			"to_port": "b"
+		},
+		{
+			"from": 3,
+			"from_port": "value",
+			"to": 4,
+			"to_port": "x"
+		},
+		{
+			"from": 4,
+			"from_port": "color",
+			"to": 5,
+			"to_port": "color"
+		}
+	]
+}

@@ -1,0 +1,308 @@
+{
+	"format": "vfx_forge_recipe",
+	"version": 1,
+	"name": "star_flare",
+	"settings": {
+		"frame_size": 512,
+		"cols": 1,
+		"rows": 1,
+		"loop": false,
+		"usage": "effect",
+		"import_preset": "2d",
+		"export_path": "res://vfx_textures/star_flare.png",
+		"fps": 24.0,
+		"make_sprite_frames": false,
+		"make_particle_material": true,
+		"blend": "add"
+	},
+	"nodes": [
+		{
+			"id": 1,
+			"type": "rays",
+			"pos": [
+				0,
+				0
+			],
+			"params": {
+				"center": [
+					0.5,
+					0.5
+				],
+				"count": 4.0,
+				"width": 0.014,
+				"len_min": 0.48,
+				"len_max": 0.5,
+				"rotate": 0.0,
+				"jitter": 0.0,
+				"softness": 0.012,
+				"seed": 1
+			}
+		},
+		{
+			"id": 2,
+			"type": "rays",
+			"pos": [
+				0,
+				360
+			],
+			"params": {
+				"center": [
+					0.5,
+					0.5
+				],
+				"count": 4.0,
+				"width": 0.008,
+				"len_min": 0.22,
+				"len_max": 0.24,
+				"rotate": 0.125,
+				"jitter": 0.0,
+				"softness": 0.01,
+				"seed": 1
+			}
+		},
+		{
+			"id": 3,
+			"type": "rays",
+			"pos": [
+				0,
+				720
+			],
+			"params": {
+				"center": [
+					0.5,
+					0.5
+				],
+				"count": 28.0,
+				"width": 0.004,
+				"len_min": 0.08,
+				"len_max": 0.26,
+				"rotate": 0.0,
+				"jitter": 1.0,
+				"softness": 0.006,
+				"seed": 9
+			}
+		},
+		{
+			"id": 4,
+			"type": "gradient",
+			"pos": [
+				0,
+				1080
+			],
+			"params": {
+				"mode": 1,
+				"center": [
+					0.5,
+					0.5
+				],
+				"angle": 0.0,
+				"scale": 1.6
+			}
+		},
+		{
+			"id": 5,
+			"type": "math",
+			"pos": [
+				340,
+				212
+			],
+			"params": {
+				"op": 7,
+				"b": 1.0
+			}
+		},
+		{
+			"id": 6,
+			"type": "math",
+			"pos": [
+				680,
+				212
+			],
+			"params": {
+				"op": 4,
+				"b": 3.0
+			}
+		},
+		{
+			"id": 7,
+			"type": "circle",
+			"pos": [
+				0,
+				1318
+			],
+			"params": {
+				"center": [
+					0.5,
+					0.5
+				],
+				"radius": 0.025,
+				"outline": false,
+				"thickness": 0.05,
+				"softness": 0.06
+			}
+		},
+		{
+			"id": 8,
+			"type": "blend",
+			"pos": [
+				340,
+				0
+			],
+			"params": {
+				"mode": 5,
+				"amount": 1.0
+			}
+		},
+		{
+			"id": 9,
+			"type": "blend",
+			"pos": [
+				680,
+				0
+			],
+			"params": {
+				"mode": 5,
+				"amount": 0.6
+			}
+		},
+		{
+			"id": 10,
+			"type": "blend",
+			"pos": [
+				1020,
+				0
+			],
+			"params": {
+				"mode": 1,
+				"amount": 0.8
+			}
+		},
+		{
+			"id": 11,
+			"type": "blend",
+			"pos": [
+				1360,
+				0
+			],
+			"params": {
+				"mode": 5,
+				"amount": 1.0
+			}
+		},
+		{
+			"id": 12,
+			"type": "gradient_map",
+			"pos": [
+				1700,
+				0
+			],
+			"params": {
+				"gradient": [
+					[
+						0.0,
+						"#ffb04000"
+					],
+					[
+						0.12,
+						"#ff9a3070"
+					],
+					[
+						0.45,
+						"#ffd890ff"
+					],
+					[
+						1.0,
+						"#ffffffff"
+					]
+				],
+				"alpha_by_input": false
+			}
+		},
+		{
+			"id": 13,
+			"type": "output",
+			"pos": [
+				2040,
+				0
+			],
+			"params": {
+				"mode": 0,
+				"edge_fade": 0.05
+			}
+		}
+	],
+	"connections": [
+		{
+			"from": 4,
+			"from_port": "value",
+			"to": 5,
+			"to_port": "a"
+		},
+		{
+			"from": 5,
+			"from_port": "value",
+			"to": 6,
+			"to_port": "a"
+		},
+		{
+			"from": 1,
+			"from_port": "mask",
+			"to": 8,
+			"to_port": "a"
+		},
+		{
+			"from": 2,
+			"from_port": "mask",
+			"to": 8,
+			"to_port": "b"
+		},
+		{
+			"from": 8,
+			"from_port": "value",
+			"to": 9,
+			"to_port": "a"
+		},
+		{
+			"from": 3,
+			"from_port": "mask",
+			"to": 9,
+			"to_port": "b"
+		},
+		{
+			"from": 9,
+			"from_port": "value",
+			"to": 10,
+			"to_port": "a"
+		},
+		{
+			"from": 6,
+			"from_port": "value",
+			"to": 10,
+			"to_port": "b"
+		},
+		{
+			"from": 10,
+			"from_port": "value",
+			"to": 11,
+			"to_port": "a"
+		},
+		{
+			"from": 7,
+			"from_port": "mask",
+			"to": 11,
+			"to_port": "b"
+		},
+		{
+			"from": 11,
+			"from_port": "value",
+			"to": 12,
+			"to_port": "x"
+		},
+		{
+			"from": 12,
+			"from_port": "color",
+			"to": 13,
+			"to_port": "color"
+		}
+	]
+}

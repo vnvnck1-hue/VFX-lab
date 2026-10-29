@@ -1,0 +1,199 @@
+{
+	"format": "vfx_forge_recipe",
+	"version": 1,
+	"name": "shockwave",
+	"settings": {
+		"frame_size": 512,
+		"cols": 4,
+		"rows": 4,
+		"loop": false,
+		"usage": "effect",
+		"import_preset": "2d",
+		"export_path": "res://vfx_textures/shockwave.png",
+		"fps": 30.0,
+		"make_sprite_frames": true,
+		"make_particle_material": true,
+		"blend": "add"
+	},
+	"nodes": [
+		{
+			"id": 1,
+			"type": "ease",
+			"pos": [
+				0,
+				0
+			],
+			"params": {
+				"mode": 2,
+				"start": 0.0,
+				"end": 1.0,
+				"power": 2.5
+			}
+		},
+		{
+			"id": 2,
+			"type": "noise",
+			"pos": [
+				0,
+				238
+			],
+			"params": {
+				"mode": 0,
+				"scale": 6.0,
+				"stretch_y": 1.0,
+				"octaves": 2.0,
+				"persistence": 0.5,
+				"evolve": 0.0,
+				"wrap_x": false,
+				"seed": 4
+			}
+		},
+		{
+			"id": 3,
+			"type": "warp",
+			"pos": [
+				340,
+				512
+			],
+			"params": {
+				"strength": 0.035,
+				"dir": 0
+			}
+		},
+		{
+			"id": 4,
+			"type": "circle",
+			"pos": [
+				680,
+				0
+			],
+			"params": {
+				"center": [
+					0.5,
+					0.5
+				],
+				"radius": 0.3,
+				"outline": true,
+				"thickness": 0.05,
+				"softness": 0.03
+			}
+		},
+		{
+			"id": 5,
+			"type": "levels",
+			"pos": [
+				340,
+				0
+			],
+			"params": {
+				"in_min": 0.0,
+				"in_max": 1.0,
+				"gamma": 1.0,
+				"out_min": 0.04,
+				"out_max": 0.46
+			}
+		},
+		{
+			"id": 6,
+			"type": "levels",
+			"pos": [
+				340,
+				256
+			],
+			"params": {
+				"in_min": 0.0,
+				"in_max": 1.0,
+				"gamma": 1.0,
+				"out_min": 0.16,
+				"out_max": 0.0
+			}
+		},
+		{
+			"id": 7,
+			"type": "gradient_map",
+			"pos": [
+				1020,
+				0
+			],
+			"params": {
+				"gradient": [
+					[
+						0.0,
+						"#80d0ff00"
+					],
+					[
+						0.4,
+						"#80d0ff90"
+					],
+					[
+						1.0,
+						"#e8fbffff"
+					]
+				],
+				"alpha_by_input": false
+			}
+		},
+		{
+			"id": 8,
+			"type": "output",
+			"pos": [
+				1360,
+				0
+			],
+			"params": {
+				"mode": 0,
+				"edge_fade": 0.05
+			}
+		}
+	],
+	"connections": [
+		{
+			"from": 2,
+			"from_port": "value",
+			"to": 3,
+			"to_port": "x"
+		},
+		{
+			"from": 3,
+			"from_port": "uv",
+			"to": 4,
+			"to_port": "uv"
+		},
+		{
+			"from": 1,
+			"from_port": "value",
+			"to": 5,
+			"to_port": "x"
+		},
+		{
+			"from": 5,
+			"from_port": "value",
+			"to": 4,
+			"to_port": "radius"
+		},
+		{
+			"from": 1,
+			"from_port": "value",
+			"to": 6,
+			"to_port": "x"
+		},
+		{
+			"from": 6,
+			"from_port": "value",
+			"to": 4,
+			"to_port": "thickness"
+		},
+		{
+			"from": 4,
+			"from_port": "mask",
+			"to": 7,
+			"to_port": "x"
+		},
+		{
+			"from": 7,
+			"from_port": "color",
+			"to": 8,
+			"to_port": "color"
+		}
+	]
+}

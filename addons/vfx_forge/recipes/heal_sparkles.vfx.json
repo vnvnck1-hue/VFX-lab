@@ -1,0 +1,202 @@
+{
+	"format": "vfx_forge_recipe",
+	"version": 1,
+	"name": "heal_sparkles",
+	"settings": {
+		"frame_size": 512,
+		"cols": 4,
+		"rows": 4,
+		"loop": true,
+		"usage": "effect",
+		"import_preset": "2d",
+		"export_path": "res://vfx_textures/heal_sparkles.png",
+		"fps": 20.0,
+		"make_sprite_frames": true,
+		"make_particle_material": true,
+		"blend": "add"
+	},
+	"nodes": [
+		{
+			"id": 1,
+			"type": "time",
+			"pos": [
+				0,
+				0
+			],
+			"params": {}
+		},
+		{
+			"id": 2,
+			"type": "math",
+			"pos": [
+				340,
+				438
+			],
+			"params": {
+				"op": 0,
+				"b": 0.5
+			}
+		},
+		{
+			"id": 3,
+			"type": "math",
+			"pos": [
+				680,
+				0
+			],
+			"params": {
+				"op": 10,
+				"b": 1.0
+			}
+		},
+		{
+			"id": 4,
+			"type": "scatter",
+			"pos": [
+				340,
+				0
+			],
+			"params": {
+				"center": [
+					0.5,
+					0.88
+				],
+				"progress": 0.5,
+				"count": 18.0,
+				"direction": 0.75,
+				"spread": 0.14,
+				"start_radius": 0.02,
+				"travel": 0.8,
+				"size": 0.032,
+				"size_random": 0.6,
+				"streak": 0.8,
+				"fade": 1.2,
+				"seed": 1
+			}
+		},
+		{
+			"id": 5,
+			"type": "scatter",
+			"pos": [
+				1020,
+				0
+			],
+			"params": {
+				"center": [
+					0.5,
+					0.88
+				],
+				"progress": 0.5,
+				"count": 18.0,
+				"direction": 0.75,
+				"spread": 0.14,
+				"start_radius": 0.02,
+				"travel": 0.8,
+				"size": 0.032,
+				"size_random": 0.6,
+				"streak": 0.8,
+				"fade": 1.2,
+				"seed": 2
+			}
+		},
+		{
+			"id": 6,
+			"type": "blend",
+			"pos": [
+				1360,
+				0
+			],
+			"params": {
+				"mode": 5,
+				"amount": 1.0
+			}
+		},
+		{
+			"id": 7,
+			"type": "gradient_map",
+			"pos": [
+				1700,
+				0
+			],
+			"params": {
+				"gradient": [
+					[
+						0.0,
+						"#40ff8000"
+					],
+					[
+						0.35,
+						"#40ff80c0"
+					],
+					[
+						1.0,
+						"#e8ffe8ff"
+					]
+				],
+				"alpha_by_input": false
+			}
+		},
+		{
+			"id": 8,
+			"type": "output",
+			"pos": [
+				2040,
+				0
+			],
+			"params": {
+				"mode": 0,
+				"edge_fade": 0.05
+			}
+		}
+	],
+	"connections": [
+		{
+			"from": 1,
+			"from_port": "t",
+			"to": 2,
+			"to_port": "a"
+		},
+		{
+			"from": 2,
+			"from_port": "value",
+			"to": 3,
+			"to_port": "a"
+		},
+		{
+			"from": 1,
+			"from_port": "t",
+			"to": 4,
+			"to_port": "progress"
+		},
+		{
+			"from": 3,
+			"from_port": "value",
+			"to": 5,
+			"to_port": "progress"
+		},
+		{
+			"from": 4,
+			"from_port": "mask",
+			"to": 6,
+			"to_port": "a"
+		},
+		{
+			"from": 5,
+			"from_port": "mask",
+			"to": 6,
+			"to_port": "b"
+		},
+		{
+			"from": 6,
+			"from_port": "value",
+			"to": 7,
+			"to_port": "x"
+		},
+		{
+			"from": 7,
+			"from_port": "color",
+			"to": 8,
+			"to_port": "color"
+		}
+	]
+}

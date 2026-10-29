@@ -1,0 +1,284 @@
+{
+	"format": "vfx_forge_recipe",
+	"version": 1,
+	"name": "slash_arc",
+	"settings": {
+		"frame_size": 512,
+		"cols": 4,
+		"rows": 4,
+		"loop": false,
+		"usage": "effect",
+		"import_preset": "2d",
+		"export_path": "res://vfx_textures/slash_arc.png",
+		"fps": 30.0,
+		"make_sprite_frames": true,
+		"make_particle_material": true,
+		"blend": "add"
+	},
+	"nodes": [
+		{
+			"id": 1,
+			"type": "bezier",
+			"pos": [
+				0,
+				0
+			],
+			"params": {
+				"poses": [
+					{
+						"t": 0.0,
+						"p": [
+							[
+								0.1,
+								0.74
+							],
+							[
+								0.18,
+								0.14
+							],
+							[
+								0.82,
+								0.14
+							],
+							[
+								0.9,
+								0.74
+							]
+						],
+						"head": 0.02,
+						"tail": 0.0,
+						"width": 0.12
+					},
+					{
+						"t": 0.3,
+						"p": [
+							[
+								0.1,
+								0.74
+							],
+							[
+								0.18,
+								0.14
+							],
+							[
+								0.82,
+								0.14
+							],
+							[
+								0.9,
+								0.74
+							]
+						],
+						"head": 1.0,
+						"tail": 0.04,
+						"width": 0.12
+					},
+					{
+						"t": 0.65,
+						"p": [
+							[
+								0.1,
+								0.74
+							],
+							[
+								0.18,
+								0.14
+							],
+							[
+								0.82,
+								0.14
+							],
+							[
+								0.9,
+								0.74
+							]
+						],
+						"head": 1.0,
+						"tail": 0.6,
+						"width": 0.09
+					},
+					{
+						"t": 1.0,
+						"p": [
+							[
+								0.1,
+								0.74
+							],
+							[
+								0.18,
+								0.14
+							],
+							[
+								0.82,
+								0.14
+							],
+							[
+								0.9,
+								0.74
+							]
+						],
+						"head": 1.0,
+						"tail": 1.0,
+						"width": 0.02
+					}
+				],
+				"taper": 0.9,
+				"peak": 0.78,
+				"smooth": true,
+				"softness": 0.006
+			}
+		},
+		{
+			"id": 2,
+			"type": "noise",
+			"pos": [
+				340,
+				256
+			],
+			"params": {
+				"mode": 0,
+				"scale": 3.0,
+				"stretch_y": 5.0,
+				"octaves": 3.0,
+				"persistence": 0.5,
+				"evolve": 0.0,
+				"wrap_x": false,
+				"seed": 4
+			}
+		},
+		{
+			"id": 3,
+			"type": "levels",
+			"pos": [
+				340,
+				0
+			],
+			"params": {
+				"in_min": 0.0,
+				"in_max": 1.0,
+				"gamma": 0.55,
+				"out_min": 0.0,
+				"out_max": 1.0
+			}
+		},
+		{
+			"id": 4,
+			"type": "blend",
+			"pos": [
+				680,
+				0
+			],
+			"params": {
+				"mode": 3,
+				"amount": 0.55
+			}
+		},
+		{
+			"id": 5,
+			"type": "blend",
+			"pos": [
+				1020,
+				0
+			],
+			"params": {
+				"mode": 3,
+				"amount": 1.0
+			}
+		},
+		{
+			"id": 6,
+			"type": "gradient_map",
+			"pos": [
+				1360,
+				0
+			],
+			"params": {
+				"gradient": [
+					[
+						0.0,
+						"#2050ff00"
+					],
+					[
+						0.08,
+						"#2a6cffc0"
+					],
+					[
+						0.3,
+						"#48c8ffff"
+					],
+					[
+						0.6,
+						"#b8f4ffff"
+					],
+					[
+						1.0,
+						"#ffffffff"
+					]
+				],
+				"alpha_by_input": false
+			}
+		},
+		{
+			"id": 7,
+			"type": "output",
+			"pos": [
+				1700,
+				0
+			],
+			"params": {
+				"mode": 0,
+				"edge_fade": 0.05
+			}
+		}
+	],
+	"connections": [
+		{
+			"from": 1,
+			"from_port": "stroke_uv",
+			"to": 2,
+			"to_port": "uv"
+		},
+		{
+			"from": 1,
+			"from_port": "across",
+			"to": 3,
+			"to_port": "x"
+		},
+		{
+			"from": 3,
+			"from_port": "value",
+			"to": 4,
+			"to_port": "a"
+		},
+		{
+			"from": 2,
+			"from_port": "value",
+			"to": 4,
+			"to_port": "b"
+		},
+		{
+			"from": 1,
+			"from_port": "mask",
+			"to": 5,
+			"to_port": "a"
+		},
+		{
+			"from": 4,
+			"from_port": "value",
+			"to": 5,
+			"to_port": "b"
+		},
+		{
+			"from": 5,
+			"from_port": "value",
+			"to": 6,
+			"to_port": "x"
+		},
+		{
+			"from": 6,
+			"from_port": "color",
+			"to": 7,
+			"to_port": "color"
+		}
+	]
+}

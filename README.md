@@ -174,6 +174,22 @@ create_tween().tween_method(
 
 ---
 
+## 만든 툴: VFX Forge (노드 기반 VFX 텍스처/스프라이트 시트 에디터)
+
+![VFX Forge](docs/vfx_forge_ui.png)
+
+Unity 에셋 VFXGen 의 공개된 기능 설명을 참고해서 Godot 용으로 **새로 만든** 에디터 플러그인입니다.
+
+- **만드는 것**: 노드 그래프로 슬래시, 임팩트, 불꽃, 번개, 마법진 같은 스타일라이즈드 텍스처를 만듭니다.
+- **내보내는 것**: PNG 스프라이트 시트와 게임에서 바로 쓰는 리소스입니다 (SpriteFrames, 파티클 머티리얼, 임포트 설정).
+- **열기**: 플러그인을 켜면 상단에 **VFX Forge** 탭이 생깁니다. `addons/vfx_forge/vfx_forge_app.tscn` 을 F6 으로 단독 실행해도 됩니다.
+- **예제와 데모**: 예제 레시피 13개는 `vfx_textures/` 에 이미 내보내져 있습니다. 게임에서 쓰는 예시는 `scenes/vfx_forge_demo.tscn` 에 있습니다.
+- **자세한 사용법**: [addons/vfx_forge/README.md](addons/vfx_forge/README.md)
+
+![recipes](docs/vfx_forge_recipes.png)
+
+---
+
 ## 파일 구성
 
 | 경로 | 내용 |
@@ -190,6 +206,11 @@ create_tween().tween_method(
 | `vfx/card_burn/card_burn.gdshader` / `card.png` | **카드 번 셰이더** (텍스트)와 카드 텍스처 |
 | `scenes/card_burn_demo.tscn` / `.gd` | 카드 번 데모 씬 + 자동 생성 파라미터 패널 (열어서 F6으로 실행) |
 | `tools/build_card_texture.gd` | 카드 텍스처(`card.png`) 생성기 |
+| `addons/vfx_forge/` | **VFX Forge 에디터 플러그인** (노드 엔진, 렌더러, 내보내기, UI, 예제 레시피) |
+| `vfx_textures/` | VFX Forge 예제 레시피를 내보낸 시트 PNG + `_frames.tres` + `_particle.tres` |
+| `scenes/vfx_forge_demo.tscn` / `.gd` | 내보낸 텍스처를 게임에서 쓰는 데모 (AnimatedSprite2D, 파티클, Line2D 트레일, 클릭 타격) |
+| `tools/build_vfx_recipes.gd` | 예제 레시피 생성기 |
+| `tools/vfx_forge_cli.gd`, `tools/vfx_forge_selftest.gd` | 일괄 내보내기 / 노드 렌더 점검, UI 자기 점검 |
 | `docs/` | 미리보기 GIF와 스크린샷 |
 
 그래프 생성기를 다시 돌리려면 아래처럼 실행합니다. 에디터에서 그래프를 손으로 고쳤다면 다시 돌리지 마세요. 손으로 고친 내용이 덮어써집니다.
